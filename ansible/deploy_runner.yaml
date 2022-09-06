@@ -1,0 +1,7 @@
+---
+- name: Deploy GitLab Runner
+  hosts: all
+  become: true 
+
+  roles: 
+    - role-deploy-runner
