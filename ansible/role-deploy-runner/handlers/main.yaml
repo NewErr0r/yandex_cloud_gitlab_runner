@@ -4,3 +4,9 @@
     name: gitlab-runner
     enabled: true 
     state: started
+
+- name: Statred and Enabled docker
+  service: 
+    name: docker 
+    enabled: true 
+    state: started
