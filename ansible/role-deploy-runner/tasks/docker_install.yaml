@@ -1,0 +1,31 @@
+---
+- name: Docker | Add Repository for Docker 
+  apt:
+    name: "{{ packages_for_add_repo }}"
+    state: latest 
+    update_cache: yes
+    force_apt_get: yes 
+
+- name: Add key from official docker repo
+  apt_key: 
+    url: "{{ docker_key_for_repo }}"
+    state: present
+
+- name: Add docker repo 
+  apt_repository:
+    repo: "{{ apt_repository }}"
+    state: present 
+
+- name: Update the apt package
+  apt:
+    name: "*"
+    state: latest
+    update_cache: yes
+    force_apt_get: yes 
+
+- name: Install docker-ce 
+  apt: 
+    name: docker-ce 
+    state: latest
+  notify: 
+    - Statred and Enabled docker
