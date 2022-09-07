@@ -1,0 +1,10 @@
+packages_for_add_repo:
+  - git
+  - apt-transport-https
+  - ca-certificates
+  - wget
+  - software-properties-common
+  - gnupg2
+  - curl
+docker_key_for_repo: "https://download.docker.com/linux/debian/gpg"
+apt_repository: "deb [arch=amd64] https://download.docker.com/linux/debian stretch stable"

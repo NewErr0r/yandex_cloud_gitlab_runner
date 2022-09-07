@@ -1,0 +1,23 @@
+- name: Update all packages
+  apt:
+    name: "*"
+    state: latest 
+    update_cache: yes 
+    force_apt_get: yes 
+    
+- name: Configuring the Repository
+  script: script.deb.sh
+
+- name: Update all packages
+  apt: 
+    name: "*"
+    state: latest 
+    update_cache: yes 
+    force_apt_get: yes  
+
+- name: Install gitlab-runner
+  apt: 
+    name: gitlab-runner
+    state: latest
+  notify: 
+    - Started and Enabled gitlab-runner

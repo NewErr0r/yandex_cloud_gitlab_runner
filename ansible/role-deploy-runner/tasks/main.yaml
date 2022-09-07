@@ -1,24 +1,6 @@
 ---
-- name: Update all packages
-  apt:
-    name: "*"
-    state: latest 
-    update_cache: yes 
-    force_apt_get: yes 
+- name: git | Install gitlab-runner
+  include_tasks: gitlab_runner.yaml
 
-- name: Configuring the Repository
-  script: script.deb.sh
-
-- name: Update all packages
-  apt:
-    name: "*"
-    state: latest 
-    update_cache: yes 
-    force_apt_get: yes 
-
-- name: Install gitlab-runner
-  apt: 
-    name: gitlab-runner
-    state: latest
-  notify: 
-    - Started and Enabled gitlab-runner
+- name: git | Install docker 
+  include_tasks: docker_install.yaml
